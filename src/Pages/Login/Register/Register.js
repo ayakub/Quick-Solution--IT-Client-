@@ -1,11 +1,17 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../Contex/AuthProvidor';
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FirebaseError } from 'firebase/app';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContex)
+    const { createUser, googleSignIn, githubSignIn } = useContext(AuthContex);
+
+    const providor = new GoogleAuthProvider();
+    const gitProvidor = new GithubAuthProvider();
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -13,6 +19,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
+
         console.log(name, photoURL, email, password);
         createUser(email, password)
             .then(result => {
@@ -23,6 +30,27 @@ const Register = () => {
                 console.error(error);
             })
 
+    }
+    const handleGoogleSign = () => {
+        googleSignIn(providor)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .then(error => {
+                console.error(error)
+            })
+    }
+    const handleGitHubSignIn = () => {
+        githubSignIn(gitProvidor)
+            .then(result => {
+
+                const user = result.user;
+                console.log(user);
+            })
+            .then(error => {
+                console.error(error)
+            })
     }
     return (
         <div className='mt-4'>
@@ -51,10 +79,14 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
+                <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle ></FaGoogle></Button>
+                <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGithub></FaGithub></Button>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+
             </Form>
+
         </div >
     );
 };
