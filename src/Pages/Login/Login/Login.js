@@ -4,9 +4,14 @@ import { Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContex } from "../../../Contex/AuthProvidor";
+import { getAuth, getRedirectResult, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import app from "../../../Firebase/firebase.config";
+
 
 const Login = () => {
-    const { signIn } = useContext(AuthContex)
+    const { signIn, } = useContext(AuthContex);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,6 +29,7 @@ const Login = () => {
             })
 
     }
+
     return (
         <div className='mt-5 container mx-auto' style={{
             width: '350px'

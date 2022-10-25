@@ -5,7 +5,6 @@ import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { FirebaseError } from 'firebase/app';
 
 const Register = () => {
     const { createUser, googleSignIn, githubSignIn } = useContext(AuthContex);
@@ -79,8 +78,10 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle ></FaGoogle></Button>
-                <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGithub></FaGithub></Button>
+                <div className='d-flex'>
+                    <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle ></FaGoogle></Button>
+                    <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3 ms-2'><FaGithub></FaGithub></Button>
+                </div>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

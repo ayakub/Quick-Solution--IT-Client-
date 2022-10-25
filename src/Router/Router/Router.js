@@ -9,7 +9,11 @@ import FAQ from "../../Pages/Shared/FAQ/FAQ";
 export const router = createBrowserRouter([
     {
         path: '/', element: <Main></Main>, children: [
-            { path: '/', element: <Courses></Courses> },
+            {
+                path: '/',
+                element: <Courses></Courses>,
+                loader: () => fetch('http://localhost:5000/course')
+            },
             { path: '/faq', element: <FAQ></FAQ> },
             { path: '/blog', element: <Blog></Blog> },
             { path: 'register', element: <Register></Register> },
