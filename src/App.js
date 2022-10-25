@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { router } from './Router/Router/Router';
 
 function App() {
   return (
     <div >
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
