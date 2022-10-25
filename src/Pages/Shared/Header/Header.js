@@ -28,7 +28,7 @@ const Header = () => {
                             <Nav.Link eventKey={2} href="#memes">
 
                                 <Link to='/login'><Button variant="outline-light">Login</Button></Link>
-                                <Link to='/register'>     <Button variant="outline-light">Register</Button>{' '} </Link>
+                                <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button>{' '} </Link>
 
                             </Nav.Link>
                         </Nav>
