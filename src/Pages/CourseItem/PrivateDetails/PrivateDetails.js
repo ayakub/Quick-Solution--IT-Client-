@@ -2,11 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const PrivateDetails = () => {
-    const privatdata = useLoaderData()
-
+    const privatdata = useLoaderData();
+    console.log(privatdata)
     return (
         <div>
-            <img src={privatdata.image} alt="" />
+            <h3>Welcome ! you Our Premium Member</h3>
         </div>
     );
 };

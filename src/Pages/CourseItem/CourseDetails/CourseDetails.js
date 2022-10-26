@@ -21,14 +21,16 @@ const CourseDetails = () => {
             <Row>
                 <Col lg={4}>
                     {
-                        course?.map(linkItem => <Link to={`/course/${linkItem.id}`}><Button className='w-100 mb-2' variant="outline-primary">{linkItem?.title}</Button></Link>)
+                        course?.map(linkItem => <Link to={`/course/${linkItem.id}`}
+                            key={linkItem.id}
+                        ><Button className='w-100 mb-2' variant="outline-primary">{linkItem?.title}</Button></Link>)
                     }
                 </Col>
                 <Col lg={8}>
                     <Card className="">
                         <Card.Img style={{ height: '500px' }} variant="top" src={image} />
                         <Card.Body>
-                            <Card.Title>{title}</Card.Title>
+                            <Card.Title className='text-success'>{title}</Card.Title>
                             <Card.Text>
                                 {description}
                             </Card.Text>
@@ -39,7 +41,7 @@ const CourseDetails = () => {
                             </div>
                         </Card.Body>
                         <Card.Footer className='text-center' >
-                            <Link to={`/course/${id}`} ><Button variant="success">Get Premium Access</Button></Link>
+                            <Link to={`/course/private/${id}`} ><Button variant="success">Get Premium Access</Button></Link>
                         </Card.Footer>
                     </Card>
 
