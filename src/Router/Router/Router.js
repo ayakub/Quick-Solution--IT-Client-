@@ -9,6 +9,7 @@ import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 import Blog from "../../Pages/Shared/Blog/Blog";
 import FAQ from "../../Pages/Shared/FAQ/FAQ";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/course/private/:id',
-                element: <PrivateDetails></PrivateDetails>,
+                element: <PrivateRoute><PrivateDetails></PrivateDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/course/private/${params?.id}`)
             },
         ],

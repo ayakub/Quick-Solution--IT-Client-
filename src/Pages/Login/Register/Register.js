@@ -7,7 +7,7 @@ import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-    const { createUser, googleSignIn, githubSignIn } = useContext(AuthContex);
+    const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContex);
 
     const providor = new GoogleAuthProvider();
     const gitProvidor = new GithubAuthProvider();
@@ -23,6 +23,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                form.reset()
                 console.log(user)
             })
             .catch(error => {
@@ -48,6 +49,19 @@ const Register = () => {
                 console.log(user);
             })
             .then(error => {
+                console.error(error)
+            })
+    }
+
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => {
                 console.error(error)
             })
     }

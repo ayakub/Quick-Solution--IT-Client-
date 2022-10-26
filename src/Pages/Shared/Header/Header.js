@@ -1,12 +1,21 @@
 import React from 'react';
-import { Button, Container, Nav, Navbar, } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css'
 import logo from '../../../assests/logo.jpg'
 import { useContext } from 'react';
 import { AuthContex } from '../../../Contex/AuthProvidor';
+import { FaUser } from 'react-icons/fa';
 const Header = () => {
-    const { user } = useContext(AuthContex);
+    const { user, logOut } = useContext(AuthContex);
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.error(error);
+            })
+    }
     return (
         <div>
 
@@ -24,13 +33,31 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link href="#deets">
-                                {user?.displayName}
+                                {user?.uid ?
+                                    <>
+                                        <span> {user?.displayName}</span>
+                                        <Button onClick={handleSignOut} className='ms-3' variant="light">Log Out</Button>{' '}
+                                    </>
+                                    :
+                                    <>
+                                        <Link to='/login'><Button variant="outline-light">Login</Button></Link>
+                                        <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button></Link>
+                                    </>
+                                }
                             </Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
+                                {user?.photoURL ?
+                                    <Image
+                                        style={{ height: '40px' }}
+                                        roundedCircle
+                                        src={user?.photoURL}
+                                    >
 
-                                <Link to='/login'><Button variant="outline-light">Login</Button></Link>
-                                <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button>{' '} </Link>
+                                    </Image>
+                                    :
+                                    <FaUser></FaUser>
 
+                                }
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
