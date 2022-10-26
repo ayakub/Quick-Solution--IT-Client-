@@ -38,7 +38,9 @@ const CourseDetails = () => {
                                 <h5 className='text-success'>Total enroll:{total_selling}</h5>
                             </div>
                         </Card.Body>
-                        <Card.Footer className='text-center' > <Button variant="success">Get Premium Access</Button></Card.Footer>
+                        <Card.Footer className='text-center' >
+                            <Link to={`/course/${id}`} ><Button variant="success">Get Premium Access</Button></Link>
+                        </Card.Footer>
                     </Card>
 
                 </Col>

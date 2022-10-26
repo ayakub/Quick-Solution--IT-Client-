@@ -1,9 +1,12 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const PrivateDetails = () => {
+    const privatdata = useLoaderData()
+
     return (
         <div>
-            <h3>This is private route</h3>
+            <img src={privatdata.image} alt="" />
         </div>
     );
 };
