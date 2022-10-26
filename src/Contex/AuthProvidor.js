@@ -2,6 +2,7 @@ import React from 'react';
 import { createContext } from 'react';
 import app from '../Firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from 'firebase/auth'
+import { useState } from 'react';
 
 
 export const AuthContex = createContext()
@@ -9,7 +10,7 @@ const Auth = getAuth(app)
 
 const AuthProvidor = ({ children }) => {
 
-    const user = { displayName: 'chinko' }
+    const { user, setUser } = useState(null);
 
     const googleSignIn = (providor) => {
         return signInWithPopup(Auth, providor)
