@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -76,47 +76,66 @@ const Register = () => {
     return (
         <div className='mt-4'>
             <h2 className='text-center text-success'>Plese Registration now!</h2>
-            <Form className='mt-3  container mx-auto' style={{
-                width: '350px'
-            }} onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Full name</Form.Label>
-                    <Form.Control name='name' type="text" placeholder="Full name" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Photo URL</Form.Label>
-                    <Form.Control name='photoURL' type="name" placeholder="PhotoURL" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" required />
-                </Form.Group>
+            <Container>
+                <Row>
+                    <Col lg='3'></Col>
+                    <Col lg='6'>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" required />
-                </Form.Group>
-                <p className='fs-5 text-dark'>Have a Already Account?  <Link to='/login'>login</Link></p>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <div className='d-flex align-items-center'>
+                        <Form className='mt-3  container mx-auto' onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Full name</Form.Label>
+                                <Form.Control name='name' type="text" placeholder="Full name" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Photo URL</Form.Label>
+                                <Form.Control name='photoURL' type="name" placeholder="PhotoURL" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control name='email' type="email" placeholder="Enter email" required />
+                            </Form.Group>
 
-                    {/* google sign in button */}
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control name='password' type="password" placeholder="Password" required />
+                            </Form.Group>
+                            <p className='fs-5 text-dark'>Have a Already Account?  <Link to='/login'>login</Link></p>
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Check me out" />
+                            </Form.Group>
+                            <div className='d-flex align-items-center'>
 
-                    <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle className='me-2 fs-4'></FaGoogle> SignIn Google</Button>
+                                {/* google sign in button */}
 
-                    {/* github sign in  */}
+                                <Button
+                                    onClick={handleGoogleSign}
+                                    variant="outline-primary"
+                                    className='d-flex justify-content-center mb-3'>
+                                    <FaGoogle className='me-2 fs-4'>
+                                    </FaGoogle> SignIn Google
+                                </Button>
 
-                    <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3 ms-2'><FaGithub className='me-2 fs-3'></FaGithub>SignIn github</Button>
-                </div>
-                <p className='text-danger'>{error}</p>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                                {/* github sign in  */}
+
+                                <Button
+                                    onClick={handleGitHubSignIn}
+                                    variant="outline-primary"
+                                    className='d-flex justify-content-center mb-3 ms-2'>
+                                    <FaGithub className='me-2 fs-3'>
+                                    </FaGithub>SignIn github
+                                </Button>
+                            </div>
+                            <p className='text-danger'>{error}</p>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
 
 
-            </Form>
+                        </Form>
+                    </Col>
+                    <Col lg='3'></Col>
+                </Row>
+            </Container>
 
         </div >
     );

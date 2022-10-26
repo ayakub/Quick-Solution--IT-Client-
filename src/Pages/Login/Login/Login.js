@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -71,40 +71,51 @@ const Login = () => {
     }
 
     return (
-        <div className='mt-5 container mx-auto mb-5' style={{
-            width: '350px'
-
-        }}>
+        <div className='mt-5 container mx-auto mb-5' >
             < h2 className='text-center text-success' > Plese Log in!</h2>
-            <Form onSubmit={handleSubmit} >
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
-                </Form.Group>
+            <Container>
+                <Row>
+                    <Col lg='3'></Col>
+                    <Col lg='6'>
+                        <Form onSubmit={handleSubmit} >
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control name='email' type="email" placeholder="Enter email" />
+                            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" />
-                </Form.Group>
-                <p className='fs-5 text-dark '>Are You new user?  <Link to='/register'>Register</Link></p>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control name='password' type="password" placeholder="Password" />
+                            </Form.Group>
+                            <p className='fs-5 text-dark '>Are You new user?  <Link to='/register'>Register</Link></p>
 
 
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-                <p className='text-danger'>{error}</p>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            <p className='text-danger'>{error}</p>
 
-                <Button
-                    onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle className='me-2 fs-4'></FaGoogle> SignIn Google
-                </Button>
+                            <div className="d-flex">
+                                <Button
+                                    onClick={handleGoogleSign}
+                                    variant="outline-primary"
+                                    className='d-flex justify-content-center mb-3'>
+                                    <FaGoogle className='me-2 fs-4'>
+                                    </FaGoogle> SignIn Google
+                                </Button>
 
-                <Button
-                    onClick={handleGitHubSignIn}
-                    variant="outline-primary"
-                    className='d-flex justify-content-center mb-3 ms-2'>
-                    <FaGithub className='me-2 fs-3'>
-                    </FaGithub>SignIn github</Button>
-            </Form>
+                                <Button
+                                    onClick={handleGitHubSignIn}
+                                    variant="outline-primary"
+                                    className='d-flex justify-content-center mb-3 ms-2'>
+                                    <FaGithub className='me-2 fs-3'>
+                                    </FaGithub>SignIn github</Button>
+                            </div>
+                        </Form>
+                    </Col>
+                    <Col lg='3'></Col>
+                </Row>
+            </Container>
 
 
         </div >

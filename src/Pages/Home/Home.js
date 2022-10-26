@@ -1,10 +1,15 @@
 import React from 'react';
+import { Col, Container, Image, Row } from 'react-bootstrap';
+import './Home.css'
+import pic from '../../assests/home2.webp'
 
 const Home = () => {
     return (
-        <div>
-            <h3>this is home page</h3>
-        </div>
+        <Image
+            fluid
+            src={pic}>
+
+        </Image>
     );
 };
 
