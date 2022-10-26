@@ -28,6 +28,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 form.reset()
+                handleUpdateProfile(name, photoURL)
                 console.log(user)
                 setError('')
             })
@@ -99,9 +100,15 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <div className='d-flex'>
-                    <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle ></FaGoogle></Button>
-                    <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3 ms-2'><FaGithub></FaGithub></Button>
+                <div className='d-flex align-items-center'>
+
+                    {/* google sign in button */}
+
+                    <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle className='me-2 fs-4'></FaGoogle> SignIn Google</Button>
+
+                    {/* github sign in  */}
+
+                    <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3 ms-2'><FaGithub className='me-2 fs-3'></FaGithub>SignIn github</Button>
                 </div>
                 <p className='text-danger'>{error}</p>
                 <Button variant="primary" type="submit">

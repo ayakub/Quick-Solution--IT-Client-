@@ -23,7 +23,7 @@ const CourseDetails = () => {
                     {
                         course?.map(linkItem => <Link to={`/course/${linkItem.id}`}
                             key={linkItem.id}
-                        ><Button className='w-100 mb-2' variant="outline-primary">{linkItem?.title}</Button></Link>)
+                        ><Button className='w-100 mb-2 d-none d-lg-block d-md-block' variant="outline-primary">{linkItem?.title}</Button></Link>)
                     }
                 </Col>
                 <Col lg={8}>

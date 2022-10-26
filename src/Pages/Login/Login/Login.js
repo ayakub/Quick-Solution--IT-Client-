@@ -12,9 +12,12 @@ import app from "../../../Firebase/firebase.config";
 const Login = () => {
 
     const [error, setError] = useState('')
+    const providor = new GoogleAuthProvider()
+
+    const gitProvidor = new GithubAuthProvider()
 
 
-    const { signIn, } = useContext(AuthContex);
+    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContex);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
     const navigate = useNavigate()
@@ -41,6 +44,32 @@ const Login = () => {
 
     }
 
+
+    const handleGoogleSign = () => {
+        googleSignIn(providor)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+
+            })
+            .then(error => {
+                console.error(error)
+            })
+    }
+    const handleGitHubSignIn = () => {
+        githubSignIn(gitProvidor)
+            .then(result => {
+
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .then(error => {
+                console.error(error)
+            })
+    }
+
     return (
         <div className='mt-5 container mx-auto mb-5' style={{
             width: '350px'
@@ -64,7 +93,19 @@ const Login = () => {
                     Submit
                 </Button>
                 <p className='text-danger'>{error}</p>
+
+                <Button
+                    onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle className='me-2 fs-4'></FaGoogle> SignIn Google
+                </Button>
+
+                <Button
+                    onClick={handleGitHubSignIn}
+                    variant="outline-primary"
+                    className='d-flex justify-content-center mb-3 ms-2'>
+                    <FaGithub className='me-2 fs-3'>
+                    </FaGithub>SignIn github</Button>
             </Form>
+
 
         </div >
     );

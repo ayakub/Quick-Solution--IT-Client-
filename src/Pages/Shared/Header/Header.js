@@ -5,9 +5,18 @@ import './Header.css'
 import logo from '../../../assests/logo.jpg'
 import { useContext } from 'react';
 import { AuthContex } from '../../../Contex/AuthProvidor';
-import { FaUser } from 'react-icons/fa';
+import { FaToggleOff, FaToggleOn, FaUser } from 'react-icons/fa';
+import { useState } from 'react';
 const Header = () => {
     const { user, logOut } = useContext(AuthContex);
+
+    // toggle state
+
+    const [toogle, setToogle] = useState(false)
+
+    const handleToogle = () => {
+        setToogle(!toogle)
+    }
 
     const handleSignOut = () => {
         logOut()
@@ -33,58 +42,46 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link href="#deets">
+
                                 {user?.uid ?
-                                    <>
-                                        <span> {user?.displayName}</span>
-                                        <Button onClick={handleSignOut} className='ms-3' variant="light">Log Out</Button>{' '}
-                                    </>
+
+                                    <Button onClick={handleSignOut} className='ms-3' variant="light">Log Out</Button>
+
                                     :
                                     <>
                                         <Link to='/login'><Button variant="outline-light">Login</Button></Link>
                                         <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button></Link>
                                     </>
                                 }
+
                             </Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
+
+
                                 {user?.photoURL ?
                                     <Image
                                         style={{ height: '40px' }}
                                         roundedCircle
+                                        title={user?.displayName}
                                         src={user?.photoURL}
                                     >
 
                                     </Image>
                                     :
-                                    <FaUser></FaUser>
+                                    <FaUser className='fs-2 bg-success'></FaUser>
 
                                 }
+                                <Button className='bg-success border-0  ms-4' onClick={handleToogle}>{toogle ? <FaToggleOff className='fs-1' /> : <FaToggleOn className='fs-1' />}</Button>
+
+
+
                             </Nav.Link>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            {/* <Navbar bg="light" expand="lg">
-                <Container fluid className='d-flex justify-content-between  hnkohtyhu mt-3'>
-                    <div>
-                        <Navbar.Brand href="#" className='d-flex align-items-center'><img style={{ height: '60px' }} src={logo} alt="" /> <h3 className='text-dark ms-3'>Learn CSE </h3></Navbar.Brand>
-                    </div>
-                    <div>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
 
-                           
-                                    <Link to='/'>Course </Link>
-                                    <Link to='/faq'>FAQ </Link>
-                                    <Link to='/blog'>Blog </Link>
-                              
-                                <Link to='/register'>Register </Link>
-                                <Link to='/login'>Log in</Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </div>
-                </Container>
-            </Navbar> */}
         </div>
     );
 };

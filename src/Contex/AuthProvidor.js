@@ -22,10 +22,6 @@ const AuthProvidor = ({ children }) => {
         setLoading(true)
         return signInWithPopup(Auth, providor)
     }
-    const loginWithGoogle = (providor) => {
-        setLoading(true)
-        return signInWithRedirect(Auth, providor);
-    }
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -63,7 +59,6 @@ const AuthProvidor = ({ children }) => {
         logOut,
         googleSignIn,
         githubSignIn,
-        loginWithGoogle,
         updateUserProfile,
         loading
     }
