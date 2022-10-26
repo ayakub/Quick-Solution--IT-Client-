@@ -5,9 +5,13 @@ import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { useState } from 'react';
 
 const Register = () => {
     const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContex);
+
+
+    const [error, setError] = useState('')
 
     const providor = new GoogleAuthProvider();
     const gitProvidor = new GithubAuthProvider();
@@ -25,9 +29,11 @@ const Register = () => {
                 const user = result.user;
                 form.reset()
                 console.log(user)
+                setError('')
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message)
             })
 
     }
@@ -63,6 +69,7 @@ const Register = () => {
             .then(() => { })
             .catch(error => {
                 console.error(error)
+
             })
     }
     return (
@@ -96,9 +103,11 @@ const Register = () => {
                     <Button onClick={handleGoogleSign} variant="outline-primary" className='d-flex justify-content-center mb-3'><FaGoogle ></FaGoogle></Button>
                     <Button onClick={handleGitHubSignIn} variant="outline-primary" className='d-flex justify-content-center mb-3 ms-2'><FaGithub></FaGithub></Button>
                 </div>
+                <p className='text-danger'>{error}</p>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+
 
             </Form>
 

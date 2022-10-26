@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -10,6 +10,10 @@ import app from "../../../Firebase/firebase.config";
 
 
 const Login = () => {
+
+    const [error, setError] = useState('')
+
+
     const { signIn, } = useContext(AuthContex);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -27,21 +31,23 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset()
+                setError('')
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message)
             })
 
     }
 
     return (
-        <div className='mt-5 container mx-auto' style={{
+        <div className='mt-5 container mx-auto mb-5' style={{
             width: '350px'
 
         }}>
             < h2 className='text-center text-success' > Plese Log in!</h2>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control name='email' type="email" placeholder="Enter email" />
@@ -53,11 +59,13 @@ const Login = () => {
                 </Form.Group>
                 <p className='fs-5 text-dark '>Are You new user?  <Link to='/register'>Register</Link></p>
 
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-
+                <p className='text-danger'>{error}</p>
             </Form>
+
         </div >
     );
 };
