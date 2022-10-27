@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const SideNav = () => {
     const [link, setLink] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/course')
+        fetch(' https://learn-cse-fundamentals-server.vercel.app/course')
             .then(res => res.json())
             .then(data => setLink(data))
             .catch(error => {

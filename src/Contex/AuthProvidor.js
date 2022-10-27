@@ -3,7 +3,10 @@ import { createContext } from 'react';
 import app from '../Firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signOut, updateProfile } from 'firebase/auth'
 import { useState } from 'react';
+import CourseDetails from '../Pages/CourseItem/CourseDetails/CourseDetails';
+import CourseaAll from '../Pages/CourseItem/CourseAll/CourseaAll';
 
+export const ref = React.createRef();
 
 export const AuthContex = createContext()
 const Auth = getAuth(app)
@@ -65,6 +68,7 @@ const AuthProvidor = ({ children }) => {
     return (
         <AuthContex.Provider value={authInfo}>
             {children}
+            {/* <CourseDetails></CourseDetails> */}
         </AuthContex.Provider>
     );
 };

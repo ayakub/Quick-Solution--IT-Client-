@@ -7,9 +7,6 @@ const CourseaAll = ({ courses }) => {
     console.log(courses)
     return (
         <div >
-
-
-
             <Col>
                 <Card >
                     <Card.Img style={{ height: '250px' }} variant="top" src={image} />

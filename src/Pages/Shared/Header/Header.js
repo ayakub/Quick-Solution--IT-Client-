@@ -30,18 +30,27 @@ const Header = () => {
 
             <Navbar collapseOnSelect expand="lg" bg='success' className='nav-container' variant="white">
                 <Container fluid className='d-flex justify-content-between mx-2 mt-3'>
+
+
                     <Navbar.Brand href="#home" className='d-flex align-items-center'><img style={{ height: '60px' }} src={logo} alt="" /> <h3 className='ms-2 text-white'>Learn CSE </h3></Navbar.Brand>
+
+
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="m-auto">
+
+
                             <Nav.Link ><Link className='nav-items' to='/'>Home</Link></Nav.Link>
+
                             <Nav.Link ><Link className='nav-items' to='/course'>Course </Link></Nav.Link>
+
                             <Nav.Link ><Link className='nav-items' to='/faq'>FAQ </Link></Nav.Link>
+
                             <Nav.Link ><Link className='nav-items' to='/blog'>Blog </Link></Nav.Link>
 
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">
+                            <Nav.Link >
 
                                 {user?.uid ?
 
@@ -55,8 +64,7 @@ const Header = () => {
                                 }
 
                             </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-
+                            <Nav.Link eventKey={2} >
 
                                 {user?.photoURL ?
                                     <Image
@@ -68,10 +76,10 @@ const Header = () => {
 
                                     </Image>
                                     :
-                                    <FaUser className='fs-2 bg-success'></FaUser>
+                                    <FaUser className='fs-2 text-info'></FaUser>
 
                                 }
-                                <Button className='bg-success border-0  ms-4' onClick={handleToogle}>{toogle ? <FaToggleOff className='fs-1' /> : <FaToggleOn className='fs-1' />}</Button>
+                                <Button className=' border-0 bg-success  ms-4 px-3' onClick={handleToogle}>{toogle ? <FaToggleOff className='fs-1  border-0' /> : <FaToggleOn className='fs-1  border-0' />}</Button>
 
 
 

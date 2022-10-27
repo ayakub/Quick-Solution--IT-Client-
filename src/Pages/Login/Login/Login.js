@@ -4,9 +4,9 @@ import { Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContex } from "../../../Contex/AuthProvidor";
-import { getAuth, getRedirectResult, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import app from "../../../Firebase/firebase.config";
+import swal from "sweetalert";
 
 
 const Login = () => {
@@ -36,6 +36,7 @@ const Login = () => {
                 form.reset()
                 setError('')
                 navigate(from, { replace: true })
+                swal("Welcome!", "Login success!", "success");
             })
             .catch(error => {
                 console.error(error);
@@ -51,7 +52,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
-
+                swal("Welcome!", "Login success!", "success");
             })
             .then(error => {
                 console.error(error)
@@ -64,9 +65,11 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                swal("Welcome!", "Login success!", "success");
             })
             .then(error => {
                 console.error(error)
+                swal(error.message, "error");
             })
     }
 

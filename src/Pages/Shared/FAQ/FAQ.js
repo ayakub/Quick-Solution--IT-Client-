@@ -6,7 +6,7 @@ const FAQ = () => {
         <Container className='mt-5'>
             <Row>
                 <Col>
-                    <h3 className='text-success mb-5 text-center'>This project using technology</h3>
+                    <h3 className='text-success mb-5 text-center'>Which Technology use in project?</h3>
                     <Accordion>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header><h2 className='text-success'>React</h2></Accordion.Header>

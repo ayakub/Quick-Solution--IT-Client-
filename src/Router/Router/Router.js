@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
             {
                 path: '/course',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/course')
+                loader: () => fetch(' https://learn-cse-fundamentals-server.vercel.app/course')
             },
             { path: '/faq', element: <FAQ></FAQ> },
             { path: '/blog', element: <Blog></Blog> },
@@ -26,12 +26,12 @@ export const router = createBrowserRouter([
             { path: 'login', element: <Login></Login> },
             {
                 path: '/course/:id', element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(` https://learn-cse-fundamentals-server.vercel.app/course/${params.id}`)
             },
             {
                 path: '/course/private/:id',
                 element: <PrivateRoute><PrivateDetails></PrivateDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/private/${params?.id}`)
+                loader: ({ params }) => fetch(` https://learn-cse-fundamentals-server.vercel.app/course/private/${params?.id}`)
             },
         ],
 

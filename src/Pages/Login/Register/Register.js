@@ -2,16 +2,29 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useState } from 'react';
+import swal from 'sweetalert';
 
 const Register = () => {
-    const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContex);
+
+    // contex
+    const
+        {
+            createUser,
+            googleSignIn,
+            githubSignIn,
+            updateUserProfile
+        } =
+            useContext(AuthContex);
 
 
     const [error, setError] = useState('')
+    const navigate = useNavigate()
+
+
 
     const providor = new GoogleAuthProvider();
     const gitProvidor = new GithubAuthProvider();
@@ -31,6 +44,8 @@ const Register = () => {
                 handleUpdateProfile(name, photoURL)
                 console.log(user)
                 setError('')
+                navigate('/')
+                swal("Welcome!", "Login success!", "success");
             })
             .catch(error => {
                 console.error(error);
@@ -46,6 +61,8 @@ const Register = () => {
             })
             .then(error => {
                 console.error(error)
+                navigate('/')
+                swal("Welcome!", "Login success!", "success");
             })
     }
     const handleGitHubSignIn = () => {
@@ -54,6 +71,9 @@ const Register = () => {
 
                 const user = result.user;
                 console.log(user);
+                navigate('/')
+                swal("Welcome!", "Login success!", "success");
+
             })
             .then(error => {
                 console.error(error)
@@ -74,9 +94,9 @@ const Register = () => {
             })
     }
     return (
-        <div className='mt-4'>
-            <h2 className='text-center text-success'>Plese Registration now!</h2>
-            <Container>
+        <div className=' bg-secondary'>
+            <h2 className='text-center pt-5 text-light'>Plese Registration now!</h2>
+            <Container >
                 <Row>
                     <Col lg='3'></Col>
                     <Col lg='6'>
@@ -99,17 +119,19 @@ const Register = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control name='password' type="password" placeholder="Password" required />
                             </Form.Group>
-                            <p className='fs-5 text-dark'>Have a Already Account?  <Link to='/login'>login</Link></p>
-                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Check me out" />
-                            </Form.Group>
-                            <div className='d-flex align-items-center'>
+                            <p className='fs-5 text-light'>Have a Already Account?  <Link to='/login' className='text-dark'>login</Link></p>
+
+                            <h3 className='text-danger'>{error}</h3>
+                            <Button variant="light" type="submit">
+                                Submit
+                            </Button>
+                            <div className='d-flex align-items-center mt-3'>
 
                                 {/* google sign in button */}
 
                                 <Button
                                     onClick={handleGoogleSign}
-                                    variant="outline-primary"
+                                    variant="outline-light"
                                     className='d-flex justify-content-center mb-3'>
                                     <FaGoogle className='me-2 fs-4'>
                                     </FaGoogle> SignIn Google
@@ -119,16 +141,12 @@ const Register = () => {
 
                                 <Button
                                     onClick={handleGitHubSignIn}
-                                    variant="outline-primary"
+                                    variant="outline-light"
                                     className='d-flex justify-content-center mb-3 ms-2'>
                                     <FaGithub className='me-2 fs-3'>
                                     </FaGithub>SignIn github
                                 </Button>
                             </div>
-                            <p className='text-danger'>{error}</p>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
 
 
                         </Form>
