@@ -7,7 +7,7 @@ const ErrorPage = () => {
     return (
         <>
             <div className='d-flex justify-content-center'>
-                <Image className='text-center'
+                <Image fluid className='text-center'
                     style={{ height: '500px' }}
                     src={erorImg}
                 ></Image>

@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaToggleOff, FaToggleOn, FaUser } from 'react-icons/fa';
 import { useState } from 'react';
+import swal from 'sweetalert';
 const Header = () => {
     const { user, logOut } = useContext(AuthContex);
 
@@ -20,7 +21,9 @@ const Header = () => {
 
     const handleSignOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                swal("log out!", "successfully!", "success");
+            })
             .catch(error => {
                 console.error(error);
             })

@@ -36,11 +36,13 @@ const CourseDetails = () => {
 
 
                     <div className="App">
+
                         <Pdf targetRef={ref} filename="Course ">
-                            {({ toPdf }) => <button className='border-0' onClick={toPdf}>Download <FaDownload className=' fs-3 mb-2 text-secondary'></FaDownload></button>}
+                            {({ toPdf }) => <button className='border-0' onClick={toPdf}>Download <FaDownload className=' fs-3 mb-2 text-secondary text-right'></FaDownload></button>}
                         </Pdf>
+
                         <Card className="" ref={ref}>
-                            <Card.Img style={{ height: '500px' }} variant="top" src={image} />
+                            <Card.Img className='p-3 bg-success border-rounded' style={{ height: '450px' }} variant="top" src={image} />
                             <Card.Body>
                                 <Card.Title className='text-success'>{title}</Card.Title>
                                 <Card.Text>
@@ -52,12 +54,15 @@ const CourseDetails = () => {
                                     <h5 className='text-success'>Total enroll:{total_selling}</h5>
                                 </div>
                             </Card.Body>
+
                             <Card.Footer className='text-center' >
                                 <Link to={`/course/private/${id}`} ><Button variant="success">Get Premium Access</Button></Link>
                             </Card.Footer>
+
                         </Card>
 
                     </div>
+
 
                 </Col>
             </Row>
