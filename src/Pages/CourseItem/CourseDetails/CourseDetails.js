@@ -41,7 +41,7 @@ const CourseDetails = () => {
                             {({ toPdf }) => <button className='border-0' onClick={toPdf}>Download <FaDownload className=' fs-3 mb-2 text-secondary text-right'></FaDownload></button>}
                         </Pdf>
 
-                        <Card className="" ref={ref}>
+                        <Card className="shadow-lg rounded" ref={ref} >
                             <Card.Img className='p-3 bg-success border-rounded' style={{ height: '450px' }} variant="top" src={image} />
                             <Card.Body>
                                 <Card.Title className='text-success'>{title}</Card.Title>

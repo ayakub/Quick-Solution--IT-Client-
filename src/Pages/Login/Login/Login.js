@@ -56,6 +56,7 @@ const Login = () => {
             })
             .then(error => {
                 console.error(error)
+                setError(error.message)
             })
     }
     const handleGitHubSignIn = () => {
@@ -67,9 +68,9 @@ const Login = () => {
                 navigate(from, { replace: true })
                 swal("Welcome!", "Login success!", "success");
             })
-            .then(error => {
-                console.error(error)
-                swal(error.message, "error");
+            .then(() => { })
+            .catch(error => {
+                setError(error.message)
             })
     }
 
