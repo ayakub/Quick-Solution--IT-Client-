@@ -58,11 +58,14 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-            })
-            .then(error => {
-                console.error(error)
                 navigate('/')
                 swal("Welcome!", "Login success!", "success");
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+
+
             })
     }
     const handleGitHubSignIn = () => {
@@ -77,6 +80,7 @@ const Register = () => {
             })
             .then(error => {
                 console.error(error)
+                setError(error.message)
             })
     }
 
@@ -94,12 +98,12 @@ const Register = () => {
             })
     }
     return (
-        <div className=' bg-secondary'>
-            <h2 className='text-center pt-5 text-light'>Plese Registration now!</h2>
+        <div className=' bg-secondary text-white'>
+            <h2 className='text-center pt-5 text-dark'>Please Registration now!</h2>
             <Container >
                 <Row>
-                    <Col lg='3'></Col>
-                    <Col lg='6'>
+                    <Col lg='4'></Col>
+                    <Col lg='4'>
 
                         <Form className='mt-3  container mx-auto' onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -122,8 +126,8 @@ const Register = () => {
                             <p className='fs-5 text-light'>Have a Already Account?  <Link to='/login' className='text-dark'>login</Link></p>
 
                             <h3 className='text-danger'>{error}</h3>
-                            <Button variant="light" type="submit">
-                                Submit
+                            <Button variant="dark" type="submit">
+                                Sign Up
                             </Button>
                             <div className='d-flex align-items-center mt-3'>
 
@@ -131,7 +135,7 @@ const Register = () => {
 
                                 <Button
                                     onClick={handleGoogleSign}
-                                    variant="outline-light"
+                                    variant="dark"
                                     className='d-flex justify-content-center mb-3'>
                                     <FaGoogle className='me-2 fs-4'>
                                     </FaGoogle> SignIn Google
@@ -141,7 +145,7 @@ const Register = () => {
 
                                 <Button
                                     onClick={handleGitHubSignIn}
-                                    variant="outline-light"
+                                    variant="dark"
                                     className='d-flex justify-content-center mb-3 ms-2'>
                                     <FaGithub className='me-2 fs-3'>
                                     </FaGithub>SignIn github
@@ -151,7 +155,7 @@ const Register = () => {
 
                         </Form>
                     </Col>
-                    <Col lg='3'></Col>
+                    <Col lg='4'></Col>
                 </Row>
             </Container>
 

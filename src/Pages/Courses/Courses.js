@@ -12,7 +12,7 @@ const Courses = () => {
             <Container className='mt-5'>
                 <Row>
                     <Col lg={3}>
-                        <h3 className='text-center text-success' >Our Courses</h3>
+                        <h3 className='text-center text-dark' >Our Courses</h3>
                         <SideNav></SideNav>
                     </Col>
 

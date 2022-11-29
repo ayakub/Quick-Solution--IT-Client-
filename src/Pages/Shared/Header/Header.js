@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Image, Nav, Navbar, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css'
-import logo from '../../../assests/logo.jpg'
+import logo from '../../../assests/logo.png'
 import { useContext } from 'react';
 import { AuthContex } from '../../../Contex/AuthProvidor';
 import { FaToggleOff, FaToggleOn, FaUser } from 'react-icons/fa';
@@ -31,11 +31,11 @@ const Header = () => {
     return (
         <div>
 
-            <Navbar collapseOnSelect expand="lg" bg='success' className='nav-container' variant="white">
+            <Navbar collapseOnSelect expand="lg" bg='dark' className='nav-container' variant="white">
                 <Container fluid className='d-flex justify-content-between mx-2 mt-3'>
 
 
-                    <Navbar.Brand href="#home" className='d-flex align-items-center'><img style={{ height: '60px' }} src={logo} alt="" /> <h3 className='ms-2 text-white'>Learn CSE </h3></Navbar.Brand>
+                    <Navbar.Brand href="#home" className='d-flex align-items-center'><img style={{ height: '60px' }} src={logo} alt="" /> <h3 className='ms-2 text-white'>Quick Solution IT</h3></Navbar.Brand>
 
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -62,12 +62,12 @@ const Header = () => {
                                     :
                                     <>
                                         <Link to='/login'><Button variant="outline-light">Login</Button></Link>
-                                        <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button></Link>
+                                        {/* <Link className='ms-2' to='/register'>     <Button variant="outline-light">Register</Button></Link> */}
                                     </>
                                 }
 
                             </Nav.Link>
-                            <Nav.Link eventKey={2} >
+                            <Nav.Link eventKey={2} className="text-white">
 
                                 {user?.photoURL ?
                                     <Image
@@ -79,10 +79,10 @@ const Header = () => {
 
                                     </Image>
                                     :
-                                    <FaUser className='fs-2 text-info'></FaUser>
+                                    <FaUser className='fs-2 text-white'></FaUser>
 
                                 }
-                                <Button className=' border-0 bg-success  ms-4 px-3' onClick={handleToogle}>{toogle ? <FaToggleOff className='fs-1  border-0' /> : <FaToggleOn className='fs-1  border-0' />}</Button>
+                                <Button className=' border-0 bg-dark  ms-4 px-3' onClick={handleToogle}>{toogle ? <FaToggleOff className='fs-1  border-0' /> : <FaToggleOn className='fs-1  border-0' />}</Button>
 
 
 

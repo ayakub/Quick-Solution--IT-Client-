@@ -8,11 +8,11 @@ const CourseaAll = ({ courses }) => {
     return (
         <div >
             <Col>
-                <Card >
+                <Card className='bg-primary'>
                     <Card.Img style={{ height: '250px' }} variant="top" src={image} />
                     <Card.Body>
                         <Card.Title className='mb-2'>{title}</Card.Title>
-                        <Link to={`/course/${id}`}> <Button className='w-100' variant="success">Course Details</Button></Link>
+                        <Link to={`/course/${id}`}> <Button className='w-100' variant="dark">Course Details</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>

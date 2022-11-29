@@ -75,15 +75,15 @@ const Login = () => {
     }
 
     return (
-        <div className='mt-5 container mx-auto mb-5' >
-            < h2 className='text-center text-success' > Plese Log in!</h2>
-            <Container>
+        <div className=' mx-auto  pt-5 pb-5 bg-secondary w-full text-white' >
+            < h2 className='text-center text-dark mb-3' > Please Log in !</h2 >
+            <Container >
                 <Row>
-                    <Col lg='3'></Col>
-                    <Col lg='6'>
+                    <Col lg='4'></Col>
+                    <Col lg='4'>
                         <Form onSubmit={handleSubmit} >
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <Form.Control name='email' type="email" placeholder="Enter email" />
                             </Form.Group>
 
@@ -91,18 +91,18 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control name='password' type="password" placeholder="Password" />
                             </Form.Group>
-                            <p className='fs-5 text-dark '>Are You new user?  <Link to='/register'>Register</Link></p>
+                            <p className='fs-5 text-dark '>Are You new user?  <Link to='/register' className="text-white">Register</Link></p>
 
 
-                            <Button variant="primary" type="submit">
-                                Submit
+                            <Button variant="dark" type="submit" className="w-full">
+                                Login
                             </Button>
                             <p className='text-danger'>{error}</p>
 
                             <div className="d-flex">
                                 <Button
                                     onClick={handleGoogleSign}
-                                    variant="outline-primary"
+                                    variant="dark"
                                     className='d-flex justify-content-center mb-3'>
                                     <FaGoogle className='me-2 fs-4'>
                                     </FaGoogle> SignIn Google
@@ -110,14 +110,14 @@ const Login = () => {
 
                                 <Button
                                     onClick={handleGitHubSignIn}
-                                    variant="outline-primary"
+                                    variant="dark"
                                     className='d-flex justify-content-center mb-3 ms-2'>
                                     <FaGithub className='me-2 fs-3'>
                                     </FaGithub>SignIn github</Button>
                             </div>
                         </Form>
                     </Col>
-                    <Col lg='3'></Col>
+                    <Col lg='4'></Col>
                 </Row>
             </Container>
 

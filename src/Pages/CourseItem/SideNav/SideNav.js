@@ -18,7 +18,7 @@ const SideNav = () => {
     return (
         <div className='d-none d-lg-block mt-4'>
             {
-                link?.map(linkItem => <Link to={`/course/${linkItem.id}`}><Button className='w-100 mb-2' variant="outline-primary">{linkItem?.title}</Button></Link>)
+                link?.map(linkItem => <Link to={`/course/${linkItem.id}`}><Button className='w-100 mb-2' variant="primary">{linkItem?.title}</Button></Link>)
             }
         </div>
     );

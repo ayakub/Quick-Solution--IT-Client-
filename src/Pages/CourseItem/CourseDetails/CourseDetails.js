@@ -29,7 +29,7 @@ const CourseDetails = () => {
                     {
                         course?.map(linkItem => <Link to={`/course/${linkItem.id}`}
                             key={linkItem.id}
-                        ><Button className='w-100 mb-2 d-none d-lg-block d-md-block' variant="outline-primary">{linkItem?.title}</Button></Link>)
+                        ><Button className='w-100 mb-2 d-none d-lg-block d-md-block' variant="primary">{linkItem?.title}</Button></Link>)
                     }
                 </Col>
                 <Col lg={8}>
@@ -38,25 +38,25 @@ const CourseDetails = () => {
                     <div className="App">
 
                         <Pdf targetRef={ref} filename="Course ">
-                            {({ toPdf }) => <button className='border-0' onClick={toPdf}>Download <FaDownload className=' fs-3 mb-2 text-secondary text-right'></FaDownload></button>}
+                            {({ toPdf }) => <button className='border-0 bg-dark text-white p-2 mb-2' onClick={toPdf}>Download <FaDownload className=' fs-3 mb-2 text-secondary text-right'></FaDownload></button>}
                         </Pdf>
 
-                        <Card className="shadow-lg rounded" ref={ref} >
-                            <Card.Img className='p-3 bg-success border-rounded' style={{ height: '450px' }} variant="top" src={image} />
+                        <Card className="shadow-lg rounded bg-secondary text-white" ref={ref} >
+                            <Card.Img className='p-3 bg-primary border-rounded' style={{ height: '450px' }} variant="top" src={image} />
                             <Card.Body>
-                                <Card.Title className='text-success'>{title}</Card.Title>
-                                <Card.Text>
+                                <Card.Title className='text-dark'>{title}</Card.Title>
+                                <Card.Text >
                                     {description}
                                 </Card.Text>
                                 <div className='d-flex justify-content-between'>
-                                    <h3 className='text-success'>ratings:{rating}</h3>
-                                    <h4 className='text-danger'>Course fee: {price} <span>k</span></h4>
-                                    <h5 className='text-success'>Total enroll:{total_selling}</h5>
+                                    <h3 className=''>ratings:{rating}</h3>
+                                    <h4 className='text-dark'>Course fee: {price} <span>k</span></h4>
+                                    <h5 className=''>Total enroll:{total_selling}</h5>
                                 </div>
                             </Card.Body>
 
                             <Card.Footer className='text-center' >
-                                <Link to={`/course/private/${id}`} ><Button variant="success">Get Premium Access</Button></Link>
+                                <Link to={`/course/private/${id}`} ><Button variant="dark">Get Premium Access</Button></Link>
                             </Card.Footer>
 
                         </Card>

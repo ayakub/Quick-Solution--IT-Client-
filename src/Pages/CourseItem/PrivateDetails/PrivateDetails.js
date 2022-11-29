@@ -7,7 +7,7 @@ const PrivateDetails = () => {
     const { image, title, description } = privatedata
     return (
         <div className='mt-5'>
-            <h3 className='text-center text-success mb-5'>Welcome !Now you Our Premium Member</h3>
+            <h3 className='text-center text-dark mb-5'>Welcome !Now you Our Premium Member</h3>
             <div>
                 <Container>
                     <Row>
@@ -23,7 +23,7 @@ const PrivateDetails = () => {
                                         {description}
                                     </Card.Text>
                                     <div className='mt-3 d-flex justify-content-center mb-5' >
-                                        <Link to='/course'> <Button variant="success">Go Course</Button>{' '}</Link>
+                                        <Link to='/course'> <Button variant="dark">Go Course</Button>{' '}</Link>
                                     </div>
                                 </Card.Body>
                             </Card>
